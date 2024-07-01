@@ -11,7 +11,7 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignIn = () => {
 
-  const { setUser, setIsLoggedIn } = useGlobalContext();
+  const { setUser, setIsLogged } = useGlobalContext();
   
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -29,10 +29,10 @@ const SignIn = () => {
     setIsSubmitting(true);
 
     try {
-      await signIn(form.email, form.password);
+      // await signIn(form.email, form.password);
       const result = await getCurrentUser();
       setUser(result);
-      setIsLoggedIn(true);
+      setIsLogged(true);
       // set it to global state...
       Alert.alert("Success", "User signed in succesfully");
       router.replace('/home');
